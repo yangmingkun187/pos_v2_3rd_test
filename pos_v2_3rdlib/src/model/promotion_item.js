@@ -4,3 +4,4 @@ function PromotionItem(name, unit, count, price) {
   this.count = count;
   this.price = price;
 }
+module.exports = PromotionItem;

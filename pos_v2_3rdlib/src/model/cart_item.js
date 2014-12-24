@@ -1,3 +1,6 @@
+var _ = require("lodash");
+var Promotion = require("./promotion");
+
 function CartItem(item, count) {
   this.item = item;
   this.count = count || 0;
@@ -28,7 +31,7 @@ CartItem.prototype.toInventoryText = function() {
 };
 
 CartItem.prototype.getPromotionType = function() {
-  var promotions = Promotion.all();
+  var promotions = Promotion.loadPromotions();
   var _this = this;
   var type = '';
 
@@ -45,3 +48,4 @@ CartItem.prototype.getPromotionType = function() {
   });
   return type;
 };
+module.exports = CartItem;

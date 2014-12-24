@@ -1,7 +1,7 @@
-var Scanner = require("./scanner");
-var Cart = require("./cart");
+var Scanner = require("./model/scanner");
+var Cart = require("./model/cart");
 var _ = require("lodash");
-var Printer = require("./printer");
+var Printer = require("./model/printer");
 
 function printInventory(tags) {
   var scanner = new Scanner();
@@ -14,3 +14,5 @@ function printInventory(tags) {
 
   console.log(inventory.toString(cart));
 }
+
+module.exports = printInventory;

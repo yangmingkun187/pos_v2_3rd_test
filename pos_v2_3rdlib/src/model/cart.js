@@ -1,3 +1,7 @@
+var Promotion = require("./promotion");
+var PromotionItem = require('./promotion_item');
+var _ = require('lodash');
+
 function Cart() {
   this.cartItems = [];
 }
@@ -70,7 +74,7 @@ Cart.prototype.getPayThePrice = function(){
 Cart.prototype.getPromotionItems = function() {
   var cartItems = this.cartItems;
   var promotionItems = [];
-  var promotions = Promotion.all();
+  var promotions = Promotion.loadPromotions();
 
   _.forEach(cartItems, function(cartItem) {
     var item = cartItem.item;
@@ -84,7 +88,7 @@ Cart.prototype.getPromotionItems = function() {
     });
 
     if (promotionBarcode) {
-      
+
       promotionItems.push(new PromotionItem(item.name,
         item.unit,
         parseInt(count / 3),
@@ -93,3 +97,5 @@ Cart.prototype.getPromotionItems = function() {
     });
     return promotionItems;
   };
+
+module.exports = Cart;
