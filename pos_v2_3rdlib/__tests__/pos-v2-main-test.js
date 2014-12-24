@@ -24,7 +24,6 @@ describe('printInventory', function() {
     ];
 
     console.log = jest.genMockFn();
-
     printInventory(inputs);
 
     var expectText =
