@@ -52,8 +52,7 @@ describe('Cart', function() {
         name : '雪碧',
         unit : '瓶',
         price : 3.00
-      },
-      1);
+      }, 1);
 
       cart.cartItems = [cartItem];
       var cartItemsText = cart.getCartItemsText();
@@ -78,6 +77,26 @@ describe('Cart', function() {
        var promotionTotalPrice = cart.getPromotionTotalPrice();
        expect(promotionTotalPrice).toBe(3);
      });
+  });
+
+  describe('#getPromotionsText', function() {
+    it('should return correct promotionText', function() {
+      var Cart = require('../src/model/cart');
+      var cart = new Cart();
+      var cartItem = {
+            item : {
+              barcode:'ITEM000001',
+              name : '雪碧',
+              unit : '瓶',
+              price : 3.00
+            },
+            count : 5
+         };
+
+      cart.cartItems = [cartItem];
+      var PromotionsText = cart.getPromotionsText();
+      expect(PromotionsText).toBe('名称：雪碧，数量：1瓶\n');
+    });
   });
 
 
