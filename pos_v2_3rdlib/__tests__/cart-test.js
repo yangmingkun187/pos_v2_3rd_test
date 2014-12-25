@@ -99,7 +99,24 @@ describe('Cart', function() {
     });
   });
 
-
+  describe('#getTotalPrices', function() {
+    it('should return correct totalPrices', function() {
+      var Cart = require('../src/model/cart');
+      var cart = new Cart();
+      var cartItem = {
+        item : {
+          barcode:'ITEM000001',
+          name : '雪碧',
+          unit : '瓶',
+          price : 3.00
+        },
+        count : 1
+      };
+      cart.cartItems = [cartItem];
+      var totalPrices = cart.getTotalPrices();
+      expect(totalPrices).toBe(3);
+    });
+  });
 
 
 
