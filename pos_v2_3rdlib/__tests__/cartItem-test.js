@@ -1,8 +1,23 @@
 jest.dontMock('../src/model/cart_item');
 jest.dontMock('../src/model/promotion');
 jest.dontMock('../src/model/item');
+jest.dontMock('lodash');
 
 describe('CartItem', function() {
+  describe('#getPromotionType();', function() {
+    it('should return correct type', function() {
+      var CartItem = require('../src/model/cart_item');
+      item = {
+        barcode:'ITEM000001',
+      };
+      var cartItem = new CartItem(item, 5);
+
+      var type = cartItem.getPromotionType();
+
+      expect(type).toBe('BUY_TWO_GET_ONE_FREE');
+    });
+  });
+
   describe('#getPromotionCount', function() {
     it('should return correct promotionCount', function() {
       var CartItem = require('../src/model/cart_item');
