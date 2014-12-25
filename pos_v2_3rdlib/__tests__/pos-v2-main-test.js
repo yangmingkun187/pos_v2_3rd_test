@@ -3,14 +3,6 @@ jest.autoMockOff();
 describe('printInventory', function() {
   it('should return correct string', function() {
     var printInventory = require('../src/main');
-    var Scanner = require('../src/model/scanner');
-    var Cart = require('../src/model/cart');
-    var Printer = require('../src/model/printer');
-    var Promotion = require('../src/model/promotion');
-
-    var scanner = new Scanner();
-    var cart = new Cart();
-    var printer = new Printer();
     inputs = [
     'ITEM000001',
     'ITEM000001',

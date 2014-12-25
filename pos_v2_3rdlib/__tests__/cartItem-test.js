@@ -1,8 +1,10 @@
 jest.dontMock('../src/model/cart_item');
+jest.dontMock('../src/model/promotion');
+jest.dontMock('../src/model/item');
 
 describe('CartItem', function() {
   describe('#getPromotionCount', function() {
-    it('should return correct string', function() {
+    it('should return correct promotionCount', function() {
       var CartItem = require('../src/model/cart_item');
 
       item = {
@@ -44,6 +46,27 @@ describe('CartItem', function() {
     });
   });
 
+  describe('#getSubtotal', function() {
+    it('should return correct string', function() {
+      var CartItem = require('../src/model/cart_item');
+
+      item = {
+        barcode:'ITEM000001',
+        name : '雪碧',
+        unit : '瓶',
+        price : 3.00
+      };
+      var cartItem = new CartItem(item, 5);
+
+      cartItem.getPromotionCount = jest.genMockFn();
+
+      cartItem.getPromotionCount.mockReturnValue(1);
+
+      var subtotal = cartItem.getSubtotal();
+
+      expect(subtotal).toBe(12);
+    });
+  });
 
 
 });
